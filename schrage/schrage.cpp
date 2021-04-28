@@ -32,6 +32,7 @@ int main(int argc, char **argv)
 	fstream file;
 	int n;
 	int t = 0;
+	int k = 0;
 	vector<zadanie> N;
 	vector<zadanie> G;
 	zadanie e;	
@@ -65,17 +66,7 @@ int main(int argc, char **argv)
 
 
 
-//
-//		zadanie *N = new zadanie[n];
-//		zadanie *G = new zadanie[n];
-//		for(int i = 0; i < n; i++)
-//		{	
-//			N[i].nr = i+1;
-//			file >> N[i].r;
-//			file >> N[i].p;
-//			file >> N[i].q;
-//
-//		}
+	
 		file.close();
 	
 
@@ -101,17 +92,20 @@ int main(int argc, char **argv)
 		
 
 /**************ALGORYTM*****************/
-
 	while(!N.empty() || !G.empty())
+//		cout << "dupa" << endl;
 	{
-		while(!N.empty() || N.back().r <= t)
+		while(!N.empty() && N.back().r <= t)
 		{	
 			N.back() = e;
 			G.push_back(e);
 			N.pop_back();
 
+	
+
 		
 		}
+		
 
 		if(G.empty())
 			t = N.back().r;
@@ -134,33 +128,17 @@ int main(int argc, char **argv)
 			e = G.back();
 			G.pop_back();
 			t = t + e.p;
-			int Cmax;
 			Cmax = max(Cmax, t + e.q);
+			cout << Cmax << endl;
+
 			
 		}
 
 
 	}
-
-	cout << Cmax;
-
+	cout << Cmax << endl; 
 
 
-
-
-
-	/*	cout << n << endl;
-		
-		for(int i = 0; i < n; i++)
-		{
-			cout << N[i].nr << ": ";
-			cout << N[i].r << " ";
-			cout << N[i].p << " ";
-			cout << N[i].q << endl;
-		}
-*/
-		//delete[] C;
-		return 0;
-	
+return 0;
 }
 
