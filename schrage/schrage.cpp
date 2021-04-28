@@ -97,7 +97,8 @@ int main(int argc, char **argv)
 	{
 		while(!N.empty() && N.back().r <= t)
 		{	
-			N.back() = e;
+			e = N.back();
+			//N.back() = e;
 			G.push_back(e);
 			N.pop_back();
 
@@ -108,8 +109,9 @@ int main(int argc, char **argv)
 		
 
 		if(G.empty())
+		{
 			t = N.back().r;
-		
+		}
 		else
 		{
 			
