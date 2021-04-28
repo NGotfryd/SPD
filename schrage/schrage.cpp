@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	vector<zadanie> N;
 	vector<zadanie> G;
 	zadanie e;	
-	
+	int Cmax;		
 	fileName = argv[1];
 	
 /********WCZYTANIE DANYCH Z PLIKU************/
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 	if(file.good() == true)
 	{
 		file >> n;
-		int *C = new int [n];		
+		//int *C = new int [n];		
 
 		int buff;
 		for(int i = 0; i < n; i++)
@@ -115,11 +115,34 @@ int main(int argc, char **argv)
 
 		if(G.empty())
 			t = N.back().r;
+		
+		else
+		{
+			
+			for(int i = 0; i < G.size(); i++)
+			{
+				for(int j = 1; j < G.size(); j++)
+				{
+					if(G[j -1].q > G[j].q)
+					{
+						swap(G[j-1], G[j]);
+					}
+				}
+			}
+
+
+			e = G.back();
+			G.pop_back();
+			t = t + e.p;
+			int Cmax;
+			Cmax = max(Cmax, t + e.q);
+			
+		}
 
 
 	}
 
-
+	cout << Cmax;
 
 
 
