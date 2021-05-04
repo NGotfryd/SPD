@@ -32,7 +32,6 @@ int main(int argc, char **argv)
 	fstream file;
 	int n;
 	int t = 0;
-	int k = 0;
 	vector<zadanie> N;
 	vector<zadanie> G;
 	zadanie e;	
@@ -93,12 +92,11 @@ int main(int argc, char **argv)
 
 /**************ALGORYTM*****************/
 	while(!N.empty() || !G.empty())
-//		cout << "dupa" << endl;
+
 	{
 		while(!N.empty() && N.back().r <= t)
 		{	
 			e = N.back();
-			//N.back() = e;
 			G.push_back(e);
 			N.pop_back();
 
@@ -130,17 +128,10 @@ int main(int argc, char **argv)
 			e = G.back();
 			G.pop_back();
 			t = t + e.p;
-			Cmax = max(Cmax, t + e.q);
-			cout << Cmax << endl;
-
-			
+			Cmax = max(Cmax, t + e.q);		
 		}
-
-
 	}
 	cout << Cmax << endl; 
-
-
-return 0;
+	return 0;
 }
 
