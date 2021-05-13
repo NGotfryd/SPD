@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 	if(file.good() == true)
 	{
 		file >> n;
-		//int *C = new int [n];		
+			
 
 		int buff;
 		for(int i = 0; i < n; i++)
